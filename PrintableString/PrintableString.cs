@@ -58,13 +58,13 @@ public class PrintableStringConverter
     /// <summary>
     /// 出力可能な文字列に変換する
     /// </summary>
-    public static string ToPrintableString(ReadOnlySpan<byte> bytes, char[] chars, int useBits)
+    public static string ToPrintableString(ReadOnlySpan<byte> bytes, char[] chars, int useBits, int maxLength)
     {
         var useBytes = (useBits + 8 - 1) / 8;
         var mask = (1 << useBits) - 1;
 
         var bits = 8 * bytes.Length;
-        var length = (bits + useBits - 1) / useBits;
+        var length = Math.Min((bits + useBits - 1) / useBits, maxLength);
         Span<char> buffer = stackalloc char[length];
 
         int sourceIndex = 0;
@@ -104,10 +104,10 @@ public class PrintableStringConverter
     }
 
     /// <inheritdoc cref="ToPrintableString"/>
-    public string ToPrintableString(ReadOnlySpan<byte> bytes) => ToPrintableString(bytes, Chars, _charsBits);
+    public string ToPrintableString(ReadOnlySpan<byte> bytes, int maxLength = int.MaxValue) => ToPrintableString(bytes, Chars, _charsBits, maxLength);
 
     /// <inheritdoc cref="ToPrintableString"/>
-    public string ToPrintableString(byte[] bytes) => ToPrintableString(bytes.AsSpan());
+    public string ToPrintableString(byte[] bytes, int maxLength = int.MaxValue) => ToPrintableString(bytes.AsSpan(), maxLength);
 
     /// <summary>
     /// 変換した文字列からデータを復元する
