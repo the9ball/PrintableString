@@ -2,6 +2,9 @@
 
 namespace PrintableString;
 
+/// <summary>
+/// byte列を出力可能かつ複合可能な文字列に変換する
+/// </summary>
 public class PrintableStringConverter
 {
     /// <summary>
