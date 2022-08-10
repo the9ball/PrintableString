@@ -1,0 +1,9 @@
+﻿<Project>
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>
