@@ -16,7 +16,7 @@ public class PrintableStringConverter
     /// 出力可能な文字一覧
     /// </summary>
     /// <remarks>
-    /// この一覧のうち、<see cref="_charsMax"/>までの文字が使われる
+    /// 一覧のうち、2のべき乗個に収まる範囲のみ使用される
     /// </remarks>
     public char[] Chars
     {
@@ -36,6 +36,9 @@ public class PrintableStringConverter
     /// <summary>
     /// 出力可能な文字一覧を取得する
     /// </summary>
+    /// <remarks>
+    /// 一覧のうち、2のべき乗個に収まる範囲のみ使用される
+    /// </remarks>
     protected virtual char[] GetChars() => AsciiChars.ToArray();
 
     /// <summary>
