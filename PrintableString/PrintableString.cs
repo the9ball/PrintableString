@@ -131,7 +131,7 @@ public class PrintableStringConverter
             b = b << useBits | index;
             bits += useBits;
 
-            if (bits >= 8)
+            while (bits >= 8)
             {
                 var d = (b >> (bits - 8)) & 0xFF;
                 buffer[destinationIndex++] = (byte)d;
